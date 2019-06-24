@@ -1,0 +1,130 @@
+<div class="container-fluid">
+	<div class="container">
+		<div class="card">
+			<div class="pdd-vertical-5 pdd-horizon-10 border bottom print-invisible">
+				<ul class="list-unstyle list-inline text-right">
+					<li class="list-inline-item">
+						<a  class="pointer btn text-gray text-hover display-block padding-10 no-mrg-btm" onclick="window.print();" target="_blank">
+							<i class="ti-printer text-info pdd-right-5"></i>
+							<b>Imprimer</b>
+						</a>
+					</li>
+					<li class="list-inline-item">
+						<a  (click)="captureScreen()" class="pointer text-gray text-hover display-block padding-10 no-mrg-btm">
+							<i class="fa fa-file-pdf-o text-danger pdd-right-5"></i>
+							<b>Exporter en PDF</b>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="card-body" id="contentToConvert">
+				<div class="pdd-horizon-30">
+					<div class="mrg-top-15">	
+						<div class="inline-block">
+							<img class="img-responsive" src="assets/images/logo/logo.png" alt="">
+							<address class="pdd-left-10 mrg-top-20">
+								<b class="text-dark">Mon entreprise</b><br>
+								<span>Mon adresse</span><br>
+								<span>(123) 456-7890</span>
+							</address>
+						</div>
+						<div class="pull-right">
+							<h2>DEVIS</h2>
+						</div>
+					</div>
+					<div class="row mrg-top-20" >
+						<div class="col-md-9 col-sm-9">
+							<h1 class="pdd-left-10 mrg-top-10">{{ projet.client.company_name }}</h1>
+							<address class="pdd-left-10 mrg-top-10">
+								<b class="text-dark">{{ projet.client.first_name }} {{ projet.client.last_name }}</b><br>
+								<span>{{ projet.client.adress }}, {{ projet.client.zip_code }}</span><br>
+								<span>{{ projet.client.mail }}</span>
+							</address>
+						</div>
+						<div class="col-md-3 col-sm-3">
+							<div class="mrg-top-80">
+								<div class="text-dark text-uppercase inline-block"><b>Devis :</b></div>
+								<div class="pull-right">DV{{ projet.id }}</div>
+							</div>
+							<div class="">
+								<div class="text-dark text-uppercase inline-block"><b>Date :</b></div>
+								<div class="pull-right">25/6/2017</div>
+							</div>
+						</div>
+					</div>
+					<div class="row mrg-top-20">
+						<div class="col-md-12">
+							<div class="table-overflow">
+								<table class="table table-hover">
+									<thead>
+										<tr>
+											
+											<th style="width:60%;">Produit</th>
+											<th style="width:10%;">Quantité</th>
+                                            <th style="width:10%;">Prix HT</th>
+                                            <th style="width:10%;">TVA</th>
+                                            <th style="width:10%;">Total</th>
+                                            <th></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr *ngFor="let row of this.projet.deal ;let index = index;">	
+                                            <td>
+                                                	<ng-selectize [options]= 'products'[config]="productConfig" [(ngModel)]= "row.id_product" ngDefaultControl name="productSelected" ></ng-selectize>
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" [(ngModel)]="row.quantity" name="quantity" (change)="calculTotaux()">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" [(ngModel)]="row.price"  name="price" (change)="calculTotaux()">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" [(ngModel)]="row.tva"  name="tva"  (change)="calculTotaux()">
+                                            </td>
+                                            <td>
+                                                 <div class="pointer mrg-top-10">
+                                                    <span ><b>{{ row.quantity *(row.price * ( 1+(row.tva /100))) }} €</b></span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                              
+                                                 <div class="pointer text-center">
+                                                    <button (click)="onRemoveRow(index)" class="btn btn-icon btn-flat btn-rounded dropdown-toggle">
+                                                        <i class="ti-trash"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+										</tr>
+									</tbody>
+								</table>
+                                <div class="tohide">
+                                    <a class=" btn text-white btn-info btn-lg" (click)="onAddRow()">Ajouter une ligne</a>
+                                </div>
+							</div>
+							<div class="row mrg-top-30">
+		                        <div class="col-md-12">
+		                        	<div class="pull-right text-right">
+                                    	<h3><b>Total TTC :</b> {{ totalToootal }} €</h3>
+                                	</div>
+		                        </div>
+		                    </div>
+		                    <div class="row mrg-top-30">
+		                        <div class="col-md-12">
+		                        	<div class="border top bottom pdd-vertical-20">
+                <!--<pre>{{rows.value | json}}</pre>-->
+		                        	</div>	
+		                        </div>
+		                    </div>  
+		                    <div class="row mrg-vertical-20">
+		                    	<div class="col-md-6">
+		                    		<img class="img-responsive text-opacity mrg-top-5" width="100" src="assets/images/logo/logo.png" alt="">
+		                    	</div>
+		                    	
+		                    </div>  
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>				
+</div>

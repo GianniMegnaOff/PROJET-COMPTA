@@ -1,0 +1,48 @@
+<div class="side-nav" sideBar>
+    <div class="side-nav-inner">
+        <div class="side-nav-logo">
+            <a href="" [routerLink]="['/dashboard']">
+                <div class="logo logo-dark" style="background-image: url('assets/images/logo/logo.png')"></div>
+                <div class="logo logo-white" style="background-image: url('assets/images/logo/logo-white.png')"></div>
+            </a>
+            <div class="mobile-toggle side-nav-toggle">
+                <a (click)="toggleSideNavCollapse()" href="javascript:void(0);">
+                    <i class="ti-arrow-circle-left"></i>
+                </a>
+            </div>
+        </div>
+        <ul class="side-nav-menu scrollable" [perfectScrollbar]>
+            <li clas="nav-item" routerLinkActive="active">
+                <a class="mrg-top-30" href="" [routerLink]="['/dashboard']">
+                    <span class="icon-holder">
+                        <i class="ti-home"></i>
+                    </span>
+                    <span class="title">Accueil</span>
+                </a>
+            </li>
+             <li clas="nav-item" routerLinkActive="active">
+                <a href="" [routerLink]="['/projet']">
+                    <span class="icon-holder">
+                        <i class="ti-calendar"></i></span>
+                    <span class="title">Projets</span>
+                </a>
+            </li>
+            <li clas="nav-item" routerLinkActive="active">
+                <a href="" [routerLink]="['/client']">
+                    <span class="icon-holder">
+                        <i class="ti-user"></i></span>
+                    <span class="title">Fichier client</span>
+                </a>
+            </li>
+            <li clas="nav-item" routerLinkActive="active">
+                <a href="" [routerLink]="['/produit']">
+                    <span class="icon-holder">
+                        <i class="ti-shopping-cart"></i></span>
+                    <span class="title">Produit</span>
+                </a>
+            </li>
+            
+          
+        </ul>
+    </div>
+</div>

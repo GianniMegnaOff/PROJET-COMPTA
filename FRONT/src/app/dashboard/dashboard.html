@@ -1,0 +1,61 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-lg-3">
+			<div class="card">
+				<div class="card-block">
+					<div class="inline-block">
+						<h1 class="no-mrg-vertical">$168.90</h1>
+						<p>This Month</p>
+					</div>
+					<div class="pdd-top-25 inline-block pull-right">
+						<span class="label label-success label-lg mrg-left-5">+18%</span>
+					</div>
+					<div class="mrg-top-25">
+                        <div id="dahboard-bar-option"></div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<div class="col-lg-9">
+			<div class="card">
+				<div class="card-heading">
+					<h4 class="card-title inline-block pdd-top-5">Projet en cours</h4>
+					<a [routerLink]="['/projet']" class="btn btn-default pull-right no-mrg">Nouveau projet</a>
+				</div>
+				<div class="pdd-horizon-20 pdd-vertical-5">
+					<div [perfectScrollbar] class="overflow-y-auto relative" style="height: 381px">
+						<table class="table table-lg table-hover">
+					   		<tbody>
+						        <tr *ngFor="let project of projects" [routerLink]="['/projet/detail', project.id]">
+							        <td>
+							        	<div class="list-info pointer">
+											<img class="thumb-img" src="assets/images/project.png" alt="">
+											<div class="info">
+												<span class="title">{{ project.client.first_name }} {{ project.client.last_name }}</span>
+												<span class="sub-title">{{ project.client.company_name }} </span>
+											</div>
+										</div>
+							        </td>
+							        <td>
+							        	<div class="mrg-top-10  pointer">
+											<span>{{ project.name }} </span>
+										</div>
+							        </td>
+							        <td>
+							        	<div class="relative mrg-top-10  pointer">
+											<span class="status {{ project.statut.badge }}"> </span>
+											<span class="pdd-left-20">{{ project.statut.nom }} </span>
+										</div>
+							        </td>
+						        </tr>
+					        </tbody>
+					    </table>
+				    </div>
+				</div>
+			</div>
+		</div>	
+	</div>
+</div>
+
+

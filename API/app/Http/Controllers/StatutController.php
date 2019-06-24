@@ -1,0 +1,17 @@
+<?php namespace App\Http\Controllers;
+
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
+use Config;
+use App\Statut;
+
+class StatutController extends Controller {
+    
+    public function getAllStatut()
+    {
+        $statut = Statut::all();
+        return $statut;
+    }
+}

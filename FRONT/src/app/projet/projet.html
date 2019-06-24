@@ -1,0 +1,97 @@
+<div class="container-fluid">
+	<div class="page-title">
+		<h4>Projets</h4>
+	</div>
+	<div class="row">
+        
+        <div class="col-lg-5">
+				<div class="card widget-feed">
+                    <div class="feed-header">
+                    <div class="card-heading border bottom">
+						<h4 class="card-title">Ajouter un projet</h4>
+					</div>
+                    </div>
+					<div class="feed-body">
+						<form class="form-horizontal mrg-top-10">
+                            <div class="form-group row">
+                                <label for="form-1-1" class="col-md-3 control-label">Nom</label>
+                                <div class="col-md-9 form-group">
+                                     <input type="text" class="form-control" [(ngModel)]="project_add.name" name="productName"/>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="form-1-2" class="col-md-3 control-label">Client</label>
+                                <div class="col-md-9 form-group">
+                                <ng-selectize [options]= 'customers'[config]= "customerConfig" [(ngModel)]= "customerOwner" ngDefaultControl name="customerOwner"></ng-selectize>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="form-1-3" class="col-md-3 control-label">Description</label>
+                                <div class="col-md-9 form-group">
+                                  <textarea type="text" class="form-control" [(ngModel)]="project_add.comment" name="projectComment">
+                                    </textarea>
+                                </div>
+                            </div>
+                        </form>           
+					</div>
+                    <div class="text-right mrg-top-10">
+                       <button type="button" class="btn btn-success" (click)="createProject()">Ajouter</button>
+                    </div>
+				</div>
+        </div>
+       
+        
+        
+		<div class="col-md-7">
+			<div class="card">
+				<div class="card-block">   
+                    <div class="table-overflow">
+                         <table class="table table-lg table-hover" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+                            <thead>
+                                <tr>
+                                    <th>Client</th>
+                                    <th>Projet</th>
+                                    <th>Statut</th>
+                                    
+                                    <th></th>	
+                                </tr>
+                            </thead>
+                            <tbody>
+                                 <tr *ngFor="let project of projects">
+                                    <td>
+                                        <div class="pointer list-info mrg-top-10" [routerLink]="['/projet/detail', project.id]">
+                                            <img class="thumb-img" src="assets/images/project.png" alt="">
+                                            <div class="info">
+                                                <span class="title" ><b>{{ project.client.first_name }} {{ project.client.last_name }}</b></span>
+                                                <span class="sub-title" >{{ project.client.company_name }}</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="pointer relative mrg-top-15" [routerLink]="['/projet/detail', project.id]">
+                                            <span class="" >{{ project.name }}</span>
+                                            <span class="pdd-left-20" ></span>
+                                        </div>
+                                    </td>
+                                     <td>
+							        	<div class="relative mrg-top-10  pointer" [routerLink]="['/projet/detail', project.id]">
+											<span class="status {{ project.statut.badge }}"> </span>
+											<span class="pdd-left-20">{{ project.statut.nom }} </span>
+										</div>
+							        </td>
+                                    <td>
+                                        <div class="pointer mrg-top-10 text-center">
+                                            <button class="btn btn-icon btn-flat btn-rounded dropdown-toggle">
+                                                <i class="ti-trash" (click)="deleteProject(project.id)"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody> 
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>    
