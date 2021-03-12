@@ -39,7 +39,7 @@
     "html2canvas": "^1.0.0-rc.1",
     "imagesloaded": "^4.1.3",
     "jquery": "^3.2.1",
-    "jspdf": "^1.5.3",
+    "jspdf": "^2.3.1",
     "moment": "^2.19.1",
     "ng-selectize": "^1.1.1",
     "ng2-charts": "^1.6.0",
